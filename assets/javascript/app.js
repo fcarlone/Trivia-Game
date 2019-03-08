@@ -37,9 +37,12 @@ const triviaQuestions = [
 // **Global Variables**
 // Set question index number
 let i = 0;
+// Questions counter
 let questionsCount = 0;
 let questionsCorrect = 0;
 let questionsWrong = 0;
+// timer counter;
+let number = 10;
 
 // jQuery 
 $(document).ready(function () {
@@ -138,7 +141,6 @@ $(document).ready(function () {
       questionsCorrect++;
       questionsCount++;
       // Remove prior question and choice buttons
-      $("#game-questions").text("");
       $(".game-questions-choices").text("")
 
 
@@ -147,9 +149,8 @@ $(document).ready(function () {
       console.log('question count', questionsCount);
       console.log('questions correct', questionsCorrect);
       console.log('questions wrong', questionsWrong);
-      // // Display next question
-      // loadGameQuestions(triviaQuestions)
-      // Invoke Trivia message for correct response
+
+      // Invoke Trivia message for correct answer response
       correctResponse();
 
     } else {
@@ -169,15 +170,37 @@ $(document).ready(function () {
       console.log('questions correct', questionsCorrect);
       console.log('questions wrong', questionsWrong);
 
-      loadGameQuestions(triviaQuestions)
+      // Invoke Trivia message for wrong answer response
+      wrongResponse();
     }
   };
 
+  // Display correct response message
   const correctResponse = () => {
     $("#correct-response").text('Correct Answer')
-    // 3 seconds interval before showing next question
+    $("#game-questions").html(
+      "<p>" + `${triviaQuestions[i - 1].answer} is the correct answer` + "</p>"
+    );
+    // 3 seconds countdown (setTimeout) before showing next question
+    setTimeout(function () {
+      console.log('setTimeout method')
+      loadGameQuestions(triviaQuestions)
+    }, 4000)
+  };
 
+  // Display wrong resonse message
+  const wrongResponse = () => {
+    $("#wrong-response").text('Wrong Answer')
+    $("#game-questions").html(
+      "<p>" + `Your are wrong.  ` + `${triviaQuestions[i - 1].answer} is the correct answer` + "</p>"
+    );
+    // 3 seconds countdown (setTimeout) before showing next question
+    setTimeout(function () {
+      console.log('setTimeout method')
+      loadGameQuestions(triviaQuestions)
+    }, 4000)
   }
+
   // ***End Check Selection Section***
 
 
