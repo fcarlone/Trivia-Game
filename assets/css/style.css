@@ -1,4 +1,60 @@
-body {
-  margin-top: 100px;
-  margin-left: 400px;
+.game-content {
+  margin: auto;
+  margin-top: 5%;
+  width: 920px;
+  height: 500px;
+  border: 3px solid green;
+  padding: 25px;
+}
+
+.header-title {
+  text-align: center;
+  font-size: 50px;
+  padding: 20px 0 20px 0;
+}
+
+.header-description {
+  text-align: center;
+  font-size: 30px;
+  padding-bottom: 90px;
+}
+
+.start-content p {
+  text-align: center;
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+
+#start-button {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+}
+
+#question-container {
+  margin-top: 50px;
+}
+
+#game-questions {
+  font-size: 35px;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.choice-button {
+  border: none;
+  font-size: 25px;
+  padding: 10px;
+  text-align: center;
+}
+
+.choice-button:hover {
+  background: red;
 }

@@ -9,7 +9,7 @@ const triviaQuestions = [
   },
   {
     question: "Question 2",
-    choices: ["e", "f", "g", "h"],
+    choices: ["test the button longer choice", "f", "g", "h"],
     answer: 2
   },
   {
@@ -53,8 +53,9 @@ $(document).ready(function () {
   // Start Button
   $("#start-button").on("click", function () {
     console.log("start button")
-    // Remove Start Game section ".start-container"
+    // Remove Start Game section ".start-container" and ".header-description"
     $(".start-container").remove()
+    $(".header-description").remove()
     // Invoke loadGameQuesions functions - pass in triviaQuesions array
     loadGameQuestions(triviaQuestions);
   });
@@ -188,7 +189,7 @@ $(document).ready(function () {
   // Display correct response message
   const correctResponse = () => {
     console.log('correctResponse question count', i)
-    $("#correct-response").text('Correct Answer')
+    // $("#correct-response").text('Correct Answer')
     $("#game-questions").html(
       "<p>" + `${triviaQuestions[i - 1].answer} is the correct answer` + "</p>"
     );
@@ -197,12 +198,12 @@ $(document).ready(function () {
       console.log('setTimeout method')
       loadGameQuestions(triviaQuestions)
     }, 4000)
-
+    // $("#correct-response").remove();
   };
 
   // Display wrong resonse message
   const wrongResponse = () => {
-    $("#wrong-response").text('Wrong Answer')
+    // $("#wrong-response").text('Wrong Answer')
     $("#game-questions").html(
       "<p>" + `Your are wrong.  ` + `${triviaQuestions[i - 1].answer} is the correct answer` + "</p>"
     );
@@ -210,7 +211,8 @@ $(document).ready(function () {
     setTimeout(function () {
       console.log('setTimeout method')
       loadGameQuestions(triviaQuestions)
-    }, 4000)
+    }, 3000)
+    // $("#wrong-response").remove();
   }
 
   // ***End Check Selection Section***
@@ -218,6 +220,8 @@ $(document).ready(function () {
 
   // ***Game Stats Sections
   const gameStats = () => {
+    // Remove content
+    $("#question-container").remove()
     console.log('gameStats function')
     $("#stats-message").html(
       "<p>" + `Game is completed` + "</ps>"
