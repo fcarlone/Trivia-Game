@@ -28,11 +28,18 @@
 #start-button {
   margin-left: auto;
   margin-right: auto;
-  font-size: 20px;
+  font-size: 30px;
+  padding: 3px 10px 3px 10px;
 }
 
 #question-container {
   margin-top: 50px;
+}
+
+#question-timer {
+  font-size: 20px;
+  text-align: center;
+  padding-bottom: 30px;
 }
 
 #game-questions {

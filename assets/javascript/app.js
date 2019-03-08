@@ -109,7 +109,11 @@ $(document).ready(function () {
       let gameQuestionChoices = questionsArr[i].choices;
       let gameQuestionAnswer = questionsArr[i].answer;
 
-      // Display Question
+      // Display timer
+      $("#question-timer").html(
+        "<p>" + `Time Remaining: ${number} Seconds` + "</p>"
+      )
+      // Display question
       console.log('gameQuestions invoked')
       $("#game-questions").html(
         "<p>" + gameQuestion + "</p>"
