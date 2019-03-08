@@ -37,6 +37,7 @@ const triviaQuestions = [
 // **Global Variables**
 // Set question index number
 let i = 0;
+let arrayLength = triviaQuestions.length;
 // Questions counter
 let questionsCount = 0;
 let questionsCorrect = 0;
@@ -46,6 +47,8 @@ let number = 10;
 
 // jQuery 
 $(document).ready(function () {
+
+
 
   // Start Button
   $("#start-button").on("click", function () {
@@ -91,40 +94,47 @@ $(document).ready(function () {
   // Load Questions
   // Display Questions 
   const loadGameQuestions = (questionsArr) => {
+
+    console.log(questionsArr.length)
     console.log(i)
+    if (i >= arrayLength) {
+      console.log('loasGameQuestion index no: ', i, arrayLength)
+      gameStats();
+    } else {
 
-    // startTimer(11);
+      // startTimer(11);
 
-    let gameQuestion = questionsArr[i].question;
-    let gameQuestionChoices = questionsArr[i].choices;
-    let gameQuestionAnswer = questionsArr[i].answer;
+      let gameQuestion = questionsArr[i].question;
+      let gameQuestionChoices = questionsArr[i].choices;
+      let gameQuestionAnswer = questionsArr[i].answer;
 
-    // Display Question
-    console.log('gameQuestions invoked')
-    $("#game-questions").html(
-      "<p>" + gameQuestion + "</p>"
-    );
+      // Display Question
+      console.log('gameQuestions invoked')
+      $("#game-questions").html(
+        "<p>" + gameQuestion + "</p>"
+      );
 
-    // Create four buttons - one for each choice
-    for (let i = 0; i <= 3; i++) {
-      // Create a variable called "choiceButton" - set to new <button>
-      let choiceButton = $("<button>");
-      // Add a class to choiceButton - called choice-style
-      choiceButton.addClass("choice-button choice-style")
-      // Give the each "choiceButton" a data-attribute called "data-choice"
-      choiceButton.attr("data-choice", i + 1);
-      // Give each "choiceButton" a text value
-      choiceButton.text(gameQuestionChoices[i]);
-      // Append each "choiceButton" to "game-questions-choices" class
-      $(".game-questions-choices").append(choiceButton)
+      // Create four buttons - one for each choice
+      for (let i = 0; i <= 3; i++) {
+        // Create a variable called "choiceButton" - set to new <button>
+        let choiceButton = $("<button>");
+        // Add a class to choiceButton - called choice-style
+        choiceButton.addClass("choice-button choice-style")
+        // Give the each "choiceButton" a data-attribute called "data-choice"
+        choiceButton.attr("data-choice", i + 1);
+        // Give each "choiceButton" a text value
+        choiceButton.text(gameQuestionChoices[i]);
+        // Append each "choiceButton" to "game-questions-choices" class
+        $(".game-questions-choices").append(choiceButton)
+      }
+      // Create on on-click event for each choice-button
+      $(".choice-button").on("click", function () {
+        // Store user choice to "userSelection" variable
+        let userSelection = $(this).attr("data-choice");
+        // invoke checkAnswer function
+        checkAnswer(userSelection, gameQuestionAnswer)
+      })
     }
-    // Create on on-click event for each choice-button
-    $(".choice-button").on("click", function () {
-      // Store user choice to "userSelection" variable
-      let userSelection = $(this).attr("data-choice");
-      // invoke checkAnswer function
-      checkAnswer(userSelection, gameQuestionAnswer)
-    })
   };
   // ***End Questions Section***
 
@@ -177,6 +187,7 @@ $(document).ready(function () {
 
   // Display correct response message
   const correctResponse = () => {
+    console.log('correctResponse question count', i)
     $("#correct-response").text('Correct Answer')
     $("#game-questions").html(
       "<p>" + `${triviaQuestions[i - 1].answer} is the correct answer` + "</p>"
@@ -186,6 +197,7 @@ $(document).ready(function () {
       console.log('setTimeout method')
       loadGameQuestions(triviaQuestions)
     }, 4000)
+
   };
 
   // Display wrong resonse message
@@ -202,7 +214,9 @@ $(document).ready(function () {
   }
 
   // ***End Check Selection Section***
-
+  const gameStats = () => {
+    console.log('gameStats function')
+  }
 
   // Initial Game Setup
   const startGame = () => {
