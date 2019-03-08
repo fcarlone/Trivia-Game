@@ -77,6 +77,18 @@ $(document).ready(function () {
     if (number === 0) {
       // Invoke stopTimer function();
       stopTimer();
+      // Update count
+      i++
+      questionsWrong++
+      questionsCount++
+      // Global Count
+      console.log('question count', questionsCount);
+      console.log('questions correct', questionsCorrect);
+      console.log('questions wrong', questionsWrong);
+      // Remove prior question and choice buttons
+      $(".game-questions-choices").text("")
+      // Invoke timeExpiredResponse function
+      timeExpiredResponse();
     }
     // stopTimer function();
     function stopTimer() {
@@ -134,7 +146,6 @@ $(document).ready(function () {
     // Convert choice to integer for comparison with answer - may change
     choice = parseInt(choice)
     if (choice === answer) {
-      console.log('correct')
       // Update Global count
       i++;
       questionsCorrect++;
@@ -152,7 +163,6 @@ $(document).ready(function () {
       correctResponse();
 
     } else {
-      console.log('wrong')
       // Update count
       i++
       questionsWrong++
@@ -162,7 +172,6 @@ $(document).ready(function () {
       $(".game-questions-choices").text("")
 
       // Global Count
-      console.log("index", i)
       console.log('question count', questionsCount);
       console.log('questions correct', questionsCorrect);
       console.log('questions wrong', questionsWrong);
@@ -194,9 +203,23 @@ $(document).ready(function () {
     // Clear interval
     clearInterval(intervalID);
     number = 10;
-    // $("#wrong-response").text('Wrong Answer')
+
     $("#game-questions").html(
       "<p>" + `You are wrong. ${triviaQuestions[i - 1].answer} is the correct answer` + "</p>"
+    );
+    // 3 seconds countdown (setTimeout) before showing next question
+    setTimeout(function () {
+      startTimer();
+      loadGameQuestions(triviaQuestions)
+    }, 3000)
+  }
+  const timeExpiredResponse = () => {
+    // Clear interval
+    clearInterval(intervalID);
+    number = 10;
+
+    $("#game-questions").html(
+      "<p>" + `Time expired. ${triviaQuestions[i - 1].answer} is the correct answer` + "</p>"
     );
     // 3 seconds countdown (setTimeout) before showing next question
     setTimeout(function () {
