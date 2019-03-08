@@ -214,9 +214,17 @@ $(document).ready(function () {
   }
 
   // ***End Check Selection Section***
+
+
+  // ***Game Stats Sections
   const gameStats = () => {
     console.log('gameStats function')
+    $("#stats-message").html(
+      "<p>" + `Game is completed` + "</ps>"
+    )
   }
+
+  // ***End Game Stats Sections
 
   // Initial Game Setup
   const startGame = () => {
