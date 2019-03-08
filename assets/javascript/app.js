@@ -49,11 +49,8 @@ let number = 10;
 // jQuery 
 $(document).ready(function () {
 
-
-
   // Start Button
   $("#start-button").on("click", function () {
-    console.log("start button")
     // Remove Start Game section ".start-container" and ".header-description"
     $(".start-container").remove()
     $(".header-description").remove()
@@ -75,7 +72,6 @@ $(document).ready(function () {
     $("#question-timer").html(
       "<p>" + `Time Remaining: ${number - 1} Seconds` + "</p>"
     );
-    console.log('invoke decrementGameTimer: ', number)
     number--;
     // Condtion to stop timer
     if (number === 0) {
@@ -90,30 +86,21 @@ $(document).ready(function () {
     }
   };
 
-  // Load Questions
-  // Display Questions 
+  // Load questions 
   const loadGameQuestions = (questionsArr) => {
-
-    console.log(questionsArr.length)
-    console.log('number loadgamequestion', number)
     if (i >= arrayLength) {
-      console.log('loasGameQuestion index no: ', i, arrayLength)
       gameStats();
     } else {
-      // Display timer
+      // Display inital timer
       $("#question-timer").html(
         "<p>" + `Time Remaining: ${number} Seconds` + "</p>"
       );
-      // startTimer();
 
       let gameQuestion = questionsArr[i].question;
       let gameQuestionChoices = questionsArr[i].choices;
       let gameQuestionAnswer = questionsArr[i].answer;
 
-
-
       // Display question
-      console.log('gameQuestions invoked')
       $("#game-questions").html(
         "<p>" + gameQuestion + "</p>"
       );
@@ -144,10 +131,8 @@ $(document).ready(function () {
 
   // ***Check Selection Section***
   const checkAnswer = (choice, answer) => {
-    // Convert choice to integer for comparison with answer
+    // Convert choice to integer for comparison with answer - may change
     choice = parseInt(choice)
-    console.log('checkChoice fuction answer ', choice)
-    console.log('checkAnswer fuction answer ', answer)
     if (choice === answer) {
       console.log('correct')
       // Update Global count
@@ -156,7 +141,6 @@ $(document).ready(function () {
       questionsCount++;
       // Remove prior question and choice buttons
       $(".game-questions-choices").text("")
-
 
       // Global Global Count
       console.log("index", i)
@@ -200,13 +184,11 @@ $(document).ready(function () {
     );
     // 3 seconds countdown (setTimeout) before showing next question
     setTimeout(function () {
-      console.log('setTimeout method')
       startTimer()
       loadGameQuestions(triviaQuestions)
     }, 3000)
     // $("#correct-response").remove();
   };
-
   // Display wrong resonse message
   const wrongResponse = () => {
     // Clear interval
@@ -218,7 +200,6 @@ $(document).ready(function () {
     );
     // 3 seconds countdown (setTimeout) before showing next question
     setTimeout(function () {
-      console.log('setTimeout method')
       startTimer();
       loadGameQuestions(triviaQuestions)
     }, 3000)
@@ -239,8 +220,8 @@ $(document).ready(function () {
       "<p>" + `Game is completed` + "</ps>"
     )
   }
-
   // ***End Game Stats Sections
+
 
   // Initial Game Setup
   const startGame = () => {
