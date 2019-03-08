@@ -42,6 +42,7 @@ let arrayLength = triviaQuestions.length;
 let questionsCount = 0;
 let questionsCorrect = 0;
 let questionsWrong = 0;
+let questionsUnanswered = 0;
 // timer counter;
 let intervalID;
 let number = 10;
@@ -79,12 +80,13 @@ $(document).ready(function () {
       stopTimer();
       // Update count
       i++
-      questionsWrong++
+      questionsUnanswered++
       questionsCount++
       // Global Count
       console.log('question count', questionsCount);
       console.log('questions correct', questionsCorrect);
       console.log('questions wrong', questionsWrong);
+      console.log('questions unanswered', questionsUnanswered);
       // Remove prior question and choice buttons
       $(".game-questions-choices").text("")
       // Invoke timeExpiredResponse function
@@ -239,9 +241,16 @@ $(document).ready(function () {
     // Remove content
     $("#question-container").remove()
     console.log('gameStats function')
-    $("#stats-message").html(
-      "<p>" + `Game is completed` + "</ps>"
+    $(".stats-message").html(
+      "<p>" + `Game is completed` + "</p>"
     )
+
+    $(".stats-game-score").show(4000);
+    $(".stats-game-score").append(
+      `<p>Correct Answers: ${questionsCorrect}</p>`,
+      `<p>Incorrect Answers: ${questionsWrong}</p>`,
+      `<p>Unanswered: ${questionsUnanswered}</p>`
+    );
   }
   // ***End Game Stats Sections
 
@@ -249,6 +258,7 @@ $(document).ready(function () {
   // Initial Game Setup
   const startGame = () => {
 
+    $(".stats-game-score").hide(2000)
   }
   // Invoke startGame function
   startGame();
