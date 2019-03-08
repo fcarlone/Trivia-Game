@@ -9,7 +9,7 @@ const triviaQuestions = [
   },
   {
     question: "Question 2",
-    choices: ["test the button longer choice", "f", "g", "h"],
+    choices: ["test the button longer choice", "test the button longer choice", "test the button longer choice", "test the button longer choice"],
     answer: 2
   },
   {
@@ -43,6 +43,7 @@ let questionsCount = 0;
 let questionsCorrect = 0;
 let questionsWrong = 0;
 // timer counter;
+let intervalID;
 let number = 10;
 
 // jQuery 
@@ -57,28 +58,25 @@ $(document).ready(function () {
     $(".start-container").remove()
     $(".header-description").remove()
     // Invoke loadGameQuesions functions - pass in triviaQuesions array
+    startTimer();
     loadGameQuestions(triviaQuestions);
   });
 
   // ***Questions Section***
   // Start timer function
   const startTimer = () => {
-    // Begin timer countdown at:
-    let number = 11;
-    // Variable for interval ID to reset timer
-    let intervalID;
     // Clear intervalID prior to setting new timer to allow multiple instances
     clearInterval(intervalID);
     intervalID = setInterval(decrementGameTimer, 1000);
   }
 
   function decrementGameTimer() {
-    number = 11;
-    number--;
-    // Display timer number in #question-timer tage
+    // Display timer
     $("#question-timer").html(
-      "<p>" + "seconds: " + number + "</p>"
-    )
+      "<p>" + `Time Remaining: ${number - 1} Seconds` + "</p>"
+    );
+    console.log('invoke decrementGameTimer: ', number)
+    number--;
     // Condtion to stop timer
     if (number === 0) {
       // Invoke stopTimer function();
@@ -97,22 +95,23 @@ $(document).ready(function () {
   const loadGameQuestions = (questionsArr) => {
 
     console.log(questionsArr.length)
-    console.log(i)
+    console.log('number loadgamequestion', number)
     if (i >= arrayLength) {
       console.log('loasGameQuestion index no: ', i, arrayLength)
       gameStats();
     } else {
-
-      // startTimer(11);
+      // Display timer
+      $("#question-timer").html(
+        "<p>" + `Time Remaining: ${number} Seconds` + "</p>"
+      );
+      // startTimer();
 
       let gameQuestion = questionsArr[i].question;
       let gameQuestionChoices = questionsArr[i].choices;
       let gameQuestionAnswer = questionsArr[i].answer;
 
-      // Display timer
-      $("#question-timer").html(
-        "<p>" + `Time Remaining: ${number} Seconds` + "</p>"
-      )
+
+
       // Display question
       console.log('gameQuestions invoked')
       $("#game-questions").html(
@@ -177,7 +176,6 @@ $(document).ready(function () {
       // Remove prior question and choice buttons
       $("#game-questions").text("");
       $(".game-questions-choices").text("")
-      // Display next question
 
       // Global Count
       console.log("index", i)
@@ -192,31 +190,38 @@ $(document).ready(function () {
 
   // Display correct response message
   const correctResponse = () => {
+    // Clear interval
+    clearInterval(intervalID);
+    number = 10;
     console.log('correctResponse question count', i)
-    // $("#correct-response").text('Correct Answer')
+
     $("#game-questions").html(
       "<p>" + `${triviaQuestions[i - 1].answer} is the correct answer` + "</p>"
     );
     // 3 seconds countdown (setTimeout) before showing next question
     setTimeout(function () {
       console.log('setTimeout method')
+      startTimer()
       loadGameQuestions(triviaQuestions)
-    }, 4000)
+    }, 3000)
     // $("#correct-response").remove();
   };
 
   // Display wrong resonse message
   const wrongResponse = () => {
+    // Clear interval
+    clearInterval(intervalID);
+    number = 10;
     // $("#wrong-response").text('Wrong Answer')
     $("#game-questions").html(
-      "<p>" + `Your are wrong.  ` + `${triviaQuestions[i - 1].answer} is the correct answer` + "</p>"
+      "<p>" + `You are wrong. ${triviaQuestions[i - 1].answer} is the correct answer` + "</p>"
     );
     // 3 seconds countdown (setTimeout) before showing next question
     setTimeout(function () {
       console.log('setTimeout method')
+      startTimer();
       loadGameQuestions(triviaQuestions)
     }, 3000)
-    // $("#wrong-response").remove();
   }
 
   // ***End Check Selection Section***
@@ -224,6 +229,9 @@ $(document).ready(function () {
 
   // ***Game Stats Sections
   const gameStats = () => {
+    // Stop timer
+    clearInterval(intervalID)
+
     // Remove content
     $("#question-container").remove()
     console.log('gameStats function')
