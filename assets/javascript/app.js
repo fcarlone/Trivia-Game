@@ -102,7 +102,6 @@ $(document).ready(function () {
 
   // Load questions 
   const loadGameQuestions = (questionsArr) => {
-    console.log('loadGameQuestions function invoked')
     if (i >= arrayLength) {
       gameStats();
     } else {
@@ -247,12 +246,12 @@ $(document).ready(function () {
     )
     // Show content
     $(".replay-game-button").show();
-    $(".stats-game-score").show(4000);
     $(".stats-game-score").append(
       `<p>Correct Answers: ${questionsCorrect}</p>`,
       `<p>Incorrect Answers: ${questionsWrong}</p>`,
       `<p>Unanswered: ${questionsUnanswered}</p>`
     );
+    $(".stats-game-score").show(4000);
     $(".replay-game-button").show();
   }
 
@@ -266,13 +265,13 @@ $(document).ready(function () {
     questionsWrong = 0;
     questionsUnanswered = 0;
     // Remove stats content
-    $(".replay-game-button").hide()
-    $(".stats-game-score").hide()
-    $(".stats-message").hide()
+    $(".stats-message").empty();
+    $(".stats-game-score").empty();
+    $(".replay-game-button").hide();
     // Add Content
+    $("#question-container").show()
     startTimer();
     loadGameQuestions(triviaQuestions);
-    $("#question-container").show()
   })
   // ***End Game Stats Sections
 
@@ -280,7 +279,7 @@ $(document).ready(function () {
   // Start Game
   const startGame = () => {
     $(".replay-game-button").hide()
-    $(".stats-game-score").hide()
+
   }
   // Invoke startGame function
   startGame();
