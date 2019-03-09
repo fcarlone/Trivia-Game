@@ -102,6 +102,7 @@ $(document).ready(function () {
 
   // Load questions 
   const loadGameQuestions = (questionsArr) => {
+    console.log('loadGameQuestions function invoked')
     if (i >= arrayLength) {
       gameStats();
     } else {
@@ -239,26 +240,47 @@ $(document).ready(function () {
     clearInterval(intervalID)
 
     // Remove content
-    $("#question-container").remove()
+    $("#question-container").hide()
     console.log('gameStats function')
     $(".stats-message").html(
       "<p>" + `Game is completed` + "</p>"
     )
-
+    // Show content
+    $(".replay-game-button").show();
     $(".stats-game-score").show(4000);
     $(".stats-game-score").append(
       `<p>Correct Answers: ${questionsCorrect}</p>`,
       `<p>Incorrect Answers: ${questionsWrong}</p>`,
       `<p>Unanswered: ${questionsUnanswered}</p>`
     );
+    $(".replay-game-button").show();
   }
+
+  // Replay button on-click event
+  $(".replay-game-button").on("click", function () {
+    console.log('replay button');
+    // Reset counters
+    i = 0;
+    questionsCount = 0;
+    questionsCorrect = 0;
+    questionsWrong = 0;
+    questionsUnanswered = 0;
+    // Remove stats content
+    $(".replay-game-button").hide()
+    $(".stats-game-score").hide()
+    $(".stats-message").hide()
+    // Add Content
+    startTimer();
+    loadGameQuestions(triviaQuestions);
+    $("#question-container").show()
+  })
   // ***End Game Stats Sections
 
 
-  // Initial Game Setup
+  // Start Game
   const startGame = () => {
-
-    $(".stats-game-score").hide(2000)
+    $(".replay-game-button").hide()
+    $(".stats-game-score").hide()
   }
   // Invoke startGame function
   startGame();
