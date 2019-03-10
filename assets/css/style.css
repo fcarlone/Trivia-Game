@@ -2,7 +2,7 @@
   margin: auto;
   margin-top: 5%;
   width: 920px;
-  height: 500px;
+  height: 600px;
   border: 3px solid green;
   padding: 25px;
 }
@@ -16,7 +16,7 @@
 .header-description {
   text-align: center;
   font-size: 30px;
-  line-height: 2rem;
+  line-height: 2.5rem;
   margin-bottom: 90px;
 }
 
@@ -44,6 +44,12 @@
   padding-bottom: 30px;
 }
 
+#game-questions-count {
+  font-size: 25px;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
 #game-questions {
   font-size: 35px;
   text-align: center;
@@ -62,11 +68,13 @@ button {
   font-size: 25px;
   padding: 10px;
   text-align: center;
+  width: 300px;
 }
 
 .choice-button:hover {
   background: red;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .stats-message {

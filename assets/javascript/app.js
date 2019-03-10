@@ -143,6 +143,10 @@ $(document).ready(function () {
       let gameQuestionChoices = questionsArr[i].choices;
       let gameQuestionAnswer = questionsArr[i].answer[0];
       console.log(questionsArr[i].answer[0]);
+      // Display question count
+      $("#game-questions-count").html(
+        "<p>" + `Question No. ${i + 1}` + "</p>"
+      );
       // Display question
       $("#game-questions").html(
         "<p>" + gameQuestion + "</p>"
@@ -220,7 +224,7 @@ $(document).ready(function () {
     console.log('correctResponse question count', i)
 
     $("#game-questions").html(
-      "<p>" + `${triviaQuestions[i - 1].answer} is the correct answer` + "</p>"
+      "<p>" + `Correct.  ${triviaQuestions[i - 1].answer[1]} is the right answer` + "</p>"
     );
     // Display image
     let imgURL = `assets/images/${triviaQuestions[i - 1].image}`
@@ -242,7 +246,7 @@ $(document).ready(function () {
     number = 10;
 
     $("#game-questions").html(
-      "<p>" + `You are wrong. ${triviaQuestions[i - 1].answer} is the correct answer` + "</p>"
+      "<p>" + `You are wrong.  ${triviaQuestions[i - 1].answer[1]} is the correct answer` + "</p>"
     );
     // Display image
     let imgURL = `assets/images/${triviaQuestions[i - 1].image}`
@@ -264,7 +268,7 @@ $(document).ready(function () {
     number = 10;
 
     $("#game-questions").html(
-      "<p>" + `Time expired. ${triviaQuestions[i - 1].answer} is the correct answer` + "</p>"
+      "<p>" + `Time expired.  ${triviaQuestions[i - 1].answer[1]} is the correct answer` + "</p>"
     );
 
     // Display image
