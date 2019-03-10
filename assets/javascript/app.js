@@ -5,12 +5,13 @@ const triviaQuestions = [
     question: "Question 1",
     choices: ["1a", "1b", "1c", "1d"],
     answer: 1,
-    image: "../images/download.jpeg"
+    image: "download.jpeg"
   },
   {
     question: "Question 2",
     choices: ["test the button longer choice", "test the button longer choice", "test the button longer choice", "test the button longer choice"],
-    answer: 2
+    answer: 2,
+    image: "download.jpeg"
   },
   {
     question: "Question 3",
@@ -194,7 +195,7 @@ $(document).ready(function () {
       "<p>" + `${triviaQuestions[i - 1].answer} is the correct answer` + "</p>"
     );
     // Display image
-    let imgURL = "assets/images/download.jpeg"
+    let imgURL = `assets/images/${triviaQuestions[i - 1].image}`
     let imageDiv = $("<img>").attr("src", imgURL);
     imageDiv.attr("alt", "Image Response");
     $("#image-response").append(imageDiv);
@@ -216,7 +217,8 @@ $(document).ready(function () {
       "<p>" + `You are wrong. ${triviaQuestions[i - 1].answer} is the correct answer` + "</p>"
     );
     // Display image
-    let imgURL = "assets/images/download.jpeg"
+    let imgURL = `assets/images/${triviaQuestions[i - 1].image}`
+    console.log('imageDiv: ', imgURL)
     let imageDiv = $("<img>").attr("src", imgURL);
     imageDiv.attr("alt", "Image Response");
     $("#image-response").append(imageDiv);
@@ -238,7 +240,7 @@ $(document).ready(function () {
     );
 
     // Display image
-    let imgURL = "assets/images/download.jpeg"
+    let imgURL = `assets/images/${triviaQuestions[i - 1].image}`
     let imageDiv = $("<img>").attr("src", imgURL);
     imageDiv.attr("alt", "Image Response");
     $("#image-response").append(imageDiv);

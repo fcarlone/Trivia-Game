@@ -92,3 +92,8 @@ button {
   border-radius: 12px;
   text-align: center;
 }
+
+#image-response {
+  margin-top: 35px;
+  text-align: center;
+}
