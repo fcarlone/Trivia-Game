@@ -1,10 +1,16 @@
+body {
+  background: url("../images/wh.png");
+  background-size: cover;
+}
+
 .game-content {
   margin: auto;
   margin-top: 5%;
   width: 920px;
   height: 600px;
-  border: 3px solid green;
+  border: 3px solid rgb(51, 54, 51);
   padding: 25px;
+  background: rgba(255, 255, 255, 0.753);
 }
 
 .header-title {
@@ -36,6 +42,7 @@
 
 #question-container {
   margin-top: 50px;
+  /* background: white; */
 }
 
 #question-timer {
@@ -53,7 +60,7 @@
 #game-questions {
   font-size: 35px;
   text-align: center;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 }
 
 button {
@@ -69,12 +76,15 @@ button {
   padding: 10px;
   text-align: center;
   width: 300px;
+  background: none;
 }
 
 .choice-button:hover {
-  background: red;
+  background: rgb(116, 90, 90);
   border-radius: 8px;
   cursor: pointer;
+  color: white;
+  border: black solid;
 }
 
 .stats-message {
