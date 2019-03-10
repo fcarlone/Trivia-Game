@@ -5,7 +5,7 @@ const triviaQuestions = [
     question: "Question 1",
     choices: ["1a", "1b", "1c", "1d"],
     answer: 1,
-    img: '../images/download.jpeg'
+    image: "../images/download.jpeg"
   },
   {
     question: "Question 2",
@@ -193,12 +193,18 @@ $(document).ready(function () {
     $("#game-questions").html(
       "<p>" + `${triviaQuestions[i - 1].answer} is the correct answer` + "</p>"
     );
+    // Display image
+    let imgURL = "assets/images/download.jpeg"
+    let imageDiv = $("<img>").attr("src", imgURL);
+    imageDiv.attr("alt", "Image Response");
+    $("#image-response").append(imageDiv);
+
     // 3 seconds countdown (setTimeout) before showing next question
     setTimeout(function () {
+      $("#image-response").empty();
       startTimer()
       loadGameQuestions(triviaQuestions)
     }, 3000)
-    // $("#correct-response").remove();
   };
   // Display wrong resonse message
   const wrongResponse = () => {
@@ -209,8 +215,15 @@ $(document).ready(function () {
     $("#game-questions").html(
       "<p>" + `You are wrong. ${triviaQuestions[i - 1].answer} is the correct answer` + "</p>"
     );
+    // Display image
+    let imgURL = "assets/images/download.jpeg"
+    let imageDiv = $("<img>").attr("src", imgURL);
+    imageDiv.attr("alt", "Image Response");
+    $("#image-response").append(imageDiv);
+
     // 3 seconds countdown (setTimeout) before showing next question
     setTimeout(function () {
+      $("#image-response").empty();
       startTimer();
       loadGameQuestions(triviaQuestions)
     }, 3000)
@@ -223,8 +236,15 @@ $(document).ready(function () {
     $("#game-questions").html(
       "<p>" + `Time expired. ${triviaQuestions[i - 1].answer} is the correct answer` + "</p>"
     );
+
+    // Display image
+    let imgURL = "assets/images/download.jpeg"
+    let imageDiv = $("<img>").attr("src", imgURL);
+    imageDiv.attr("alt", "Image Response");
+    $("#image-response").append(imageDiv);
     // 3 seconds countdown (setTimeout) before showing next question
     setTimeout(function () {
+      $("#image-response").empty();
       startTimer();
       loadGameQuestions(triviaQuestions)
     }, 3000)
