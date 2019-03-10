@@ -23,7 +23,7 @@ const triviaQuestions = [
     question: "Which U.S. President attended in the Potsdam Conference (July 17 – August 2, 1945), along with main participates, the British Prime Minister and the Premier of the Soviet Union?",
     choices: ["Andrew Jackson", "Franklin D. Roosevelt", "Harry S. Truman", "Herbert Hoover"],
     answer: [3, "Harry S. Truman"],
-    image: "postdam.jpg"
+    image: "potsdam.jpg"
   },
   {
     question: "Which president is not on Mount Rushmore",

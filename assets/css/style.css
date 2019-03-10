@@ -16,7 +16,8 @@
 .header-description {
   text-align: center;
   font-size: 30px;
-  padding-bottom: 90px;
+  line-height: 2rem;
+  margin-bottom: 90px;
 }
 
 .start-content p {
