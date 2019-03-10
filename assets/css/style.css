@@ -38,11 +38,11 @@ body {
   border-radius: 12px;
   font-size: 30px;
   padding: 5px 15px;
+  background: lightgrey;
 }
 
 #question-container {
   margin-top: 50px;
-  /* background: white; */
 }
 
 #question-timer {
@@ -110,6 +110,7 @@ button {
   padding: 8px 15px;
   border-radius: 12px;
   text-align: center;
+  background: lightgrey;
 }
 
 #image-response {

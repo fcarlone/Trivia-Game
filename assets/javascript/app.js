@@ -26,7 +26,7 @@ const triviaQuestions = [
     image: "potsdam.jpg"
   },
   {
-    question: "Which president is not on Mount Rushmore",
+    question: "Which president is not on Mount Rushmore?",
     choices: ["John F. Kennedy", "Abraham Lincoln", "Thomas Jefferson", "Theodore Roosevelt"],
     answer: [1, "John F. Kennedy"],
     image: "rushmore.jpeg"
@@ -149,7 +149,7 @@ $(document).ready(function () {
       );
       // Display question
       $("#game-questions").html(
-        "<p>" + gameQuestion + "</p>"
+        "<p>" + gameQuestion + "</p>" + "<hr>"
       );
 
       // Create four buttons - one for each choice
