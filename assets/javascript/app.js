@@ -2,37 +2,65 @@ console.log('app.js')
 // Triva Questions
 const triviaQuestions = [
   {
-    question: "Question 1",
-    choices: ["1a", "1b", "1c", "1d"],
-    answer: 1,
-    image: "download.jpeg"
+    question: "Who was the only president to serve more than two terms?",
+    choices: ["Franklin D. Roosevelt", "George Washington", "Warren G. Harding", "Woodrow Wilson"],
+    answer: [1, "Franklin D. Roosevelt"],
+    image: "fdr.jpg"
   },
   {
-    question: "Question 2",
-    choices: ["test the button longer choice", "test the button longer choice", "test the button longer choice", "test the button longer choice"],
-    answer: 2,
-    image: "download.jpeg"
+    question: "Who was the only president to serve two non-consecutive terms?",
+    choices: ["James A. Garfield", "Franklin D. Roosevelt", "Ulysses S. Grant", "Grover Cleveland"],
+    answer: [4, "Grover Cleveland"],
+    image: "cleveland.jpg"
   },
   {
-    question: "Question 3",
-    choices: ["3a", "3b", "3c", "3d"],
-    answer: 3
+    question: "Who was the first president to live in the White House?",
+    choices: ["James Madison", "John Adams", "Thomas Jefferson", "George Washington"],
+    answer: [2, "John Adams"],
+    image: "adams.jpg"
   },
   {
-    question: "Question 4",
-    choices: ["a", "b", "c", "d"],
-    answer: 4
+    question: "Which U.S. President attended in the Potsdam Conference (July 17 – August 2, 1945), along with main participates, the British Prime Minister and the Premier of the Soviet Union?",
+    choices: ["Andrew Jackson", "Franklin D. Roosevelt", "Harry S. Truman", "Herbert Hoover"],
+    answer: [3, "Harry S. Truman"],
+    image: "postdam.jpg"
   },
   {
-    question: "Question 5",
-    choices: ["a", "b", "c", "d"],
-    answer: 1
+    question: "Which president is not on Mount Rushmore",
+    choices: ["John F. Kennedy", "Abraham Lincoln", "Thomas Jefferson", "Theodore Roosevelt"],
+    answer: [1, "John F. Kennedy"],
+    image: "rushmore.jpeg"
   },
   {
-    question: "This is Question 6",
-    choices: ["a", "b", "c", "d"],
-    answer: 2
+    question: "Who was the only president appointed as a Supreme Court justice after his presidency?",
+    choices: ["Benjamin Harrison", "William H. Taft", "Millard Fillmore", "Rutherford B. Hayes"],
+    answer: [2, "William H. Taft"],
+    image: "taft.jpg"
   },
+  {
+    question: "Which president’s portrait is on the $100,000 bill?",
+    choices: ["George Washington", "Abraham Lincoln", "Theodore Roosevelt", "Woodrow Wilson"],
+    answer: [4, "Woodrow Wilson"],
+    image: "wilson.jpg"
+  },
+  {
+    question: "Which president installed solar panel on the White House roof?",
+    choices: ["Bill Clinton", "Jimmy Carter", "Ronald Reagan", "Richard Nixon"],
+    answer: [2, "Jimmy Carter"],
+    image: "carter.jpg"
+  },
+  {
+    question: "Which president signed the Louisiana Purchase?",
+    choices: ["Thomas Jefferson", "James K. Polk", "Andrew Jackson", "John Tyler"],
+    answer: [1, "Thomas Jefferson"],
+    image: "jefferson.jpg"
+  },
+  {
+    question: "Which president did not receive the Nobel Peace Prize?",
+    choices: ["Barack Obama", "Woodrow Wilson", "Dwight D. Eisenhower", "Jimmy Carter"],
+    answer: [3, "Dwight D. Eisenhower"],
+    image: "eisenhower.jpg"
+  }
 ];
 
 // **Global Variables**
@@ -113,8 +141,8 @@ $(document).ready(function () {
 
       let gameQuestion = questionsArr[i].question;
       let gameQuestionChoices = questionsArr[i].choices;
-      let gameQuestionAnswer = questionsArr[i].answer;
-
+      let gameQuestionAnswer = questionsArr[i].answer[0];
+      console.log(questionsArr[i].answer[0]);
       // Display question
       $("#game-questions").html(
         "<p>" + gameQuestion + "</p>"
