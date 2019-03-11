@@ -72,9 +72,11 @@ let questionsCount = 0;
 let questionsCorrect = 0;
 let questionsWrong = 0;
 let questionsUnanswered = 0;
-// timer counter;
+// Simer counter;
 let intervalID;
 let number = 10;
+// Sound for mouseover choice buttons
+var choiceButtonsAudio = new Audio('assets/audio/1.mp3')
 
 // jQuery 
 $(document).ready(function () {
@@ -169,13 +171,17 @@ $(document).ready(function () {
         checkAnswer(userSelection, gameQuestionAnswer)
       })
     }
+    // Sound for mouseover choice buttons
+    $(".choice-button").mouseover(function () {
+      choiceButtonsAudio.play();
+    });
   };
   // ***End Questions Section***
 
 
   // ***Check Selection Section***
   const checkAnswer = (choice, answer) => {
-    // Convert choice to integer for comparison with answer - may change
+    // Convert choice to integer for comparison with answer
     choice = parseInt(choice)
     if (choice === answer) {
       // Update Global count
