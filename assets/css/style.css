@@ -15,12 +15,14 @@ body {
 
 .header-title {
   text-align: center;
+  font-family: 'Roboto', sans-serif;
   font-size: 50px;
   padding: 20px 0 20px 0;
 }
 
 .header-description {
   text-align: center;
+  font-family: 'Leto', sans-serif;
   font-size: 30px;
   line-height: 2.5rem;
   margin-bottom: 90px;
@@ -28,6 +30,7 @@ body {
 
 .start-content p {
   text-align: center;
+  font-family: 'Rubik', sans-serif;
   font-size: 20px;
   padding-bottom: 25px;
 }
@@ -47,18 +50,23 @@ body {
 
 #question-timer {
   font-size: 20px;
+  font-family: 'Libre Franklin', sans-serif;
+  font-weight: 600;
   text-align: center;
   padding-bottom: 30px;
 }
 
 #game-questions-count {
-  font-size: 25px;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
   text-align: center;
   padding-bottom: 10px;
 }
 
 #game-questions {
-  font-size: 35px;
+  font-size: 25px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: lighter;
   text-align: center;
   margin-bottom: 40px;
 }
@@ -96,6 +104,7 @@ button:focus {
 
 .stats-message {
   font-size: 35px;
+  font-family: 'Roboto', sans-serif;
   text-align: center;
   margin-top: 60px;
   height: 50px;
@@ -103,6 +112,7 @@ button:focus {
 
 .stats-game-score {
   font-size: 25px;
+  font-family: 'Roboto', sans-serif;
   text-align: center;
   margin-top: 20px;
   height: 180px;
