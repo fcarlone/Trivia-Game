@@ -8,12 +8,6 @@ const triviaQuestions = [
     image: ["fdr.jpg", "435px", "250px"]
   },
   {
-    question: "Who was the only president to serve two non-consecutive terms?",
-    choices: ["James A. Garfield", "Franklin D. Roosevelt", "Ulysses S. Grant", "Grover Cleveland"],
-    answer: [4, "Grover Cleveland"],
-    image: ["cleveland.jpg", "225px", "250px"]
-  },
-  {
     question: "Who was the first president to live in the White House?",
     choices: ["James Madison", "John Adams", "Thomas Jefferson", "George Washington"],
     answer: [2, "John Adams"],
@@ -48,6 +42,12 @@ const triviaQuestions = [
     choices: ["Bill Clinton", "Jimmy Carter", "Ronald Reagan", "Richard Nixon"],
     answer: [2, "Jimmy Carter"],
     image: ["carter.jpg", "450px", "250px"]
+  },
+  {
+    question: "Who was the only president to serve two non-consecutive terms?",
+    choices: ["James A. Garfield", "Franklin D. Roosevelt", "Ulysses S. Grant", "Grover Cleveland"],
+    answer: [4, "Grover Cleveland"],
+    image: ["cleveland.jpg", "225px", "250px"]
   },
   {
     question: "Which president signed the Louisiana Purchase?",
@@ -112,19 +112,14 @@ $(document).ready(function () {
       i++
       questionsUnanswered++
       questionsCount++
-      // Global Count
-      console.log('question count', questionsCount);
-      console.log('questions correct', questionsCorrect);
-      console.log('questions wrong', questionsWrong);
-      console.log('questions unanswered', questionsUnanswered);
+
       // Remove prior question and choice buttons
       $(".game-questions-choices").text("")
       // Invoke timeExpiredResponse function
       timeExpiredResponse();
-    }
+    };
     // stopTimer function();
     function stopTimer() {
-      console.log('stopTimer function invoked')
       // Pass name of interval variable to clearInternal method
       clearInterval(intervalID);
     }
@@ -143,7 +138,7 @@ $(document).ready(function () {
       let gameQuestion = questionsArr[i].question;
       let gameQuestionChoices = questionsArr[i].choices;
       let gameQuestionAnswer = questionsArr[i].answer[0];
-      console.log(questionsArr[i].answer[0]);
+
       // Display question count
       $("#game-questions-count").html(
         "<p>" + `Question No. ${i + 1}` + "</p>"
@@ -189,13 +184,6 @@ $(document).ready(function () {
       questionsCount++;
       // Remove prior question and choice buttons
       $(".game-questions-choices").text("")
-
-      // Global Global Count
-      console.log("index", i)
-      console.log('question count', questionsCount);
-      console.log('questions correct', questionsCorrect);
-      console.log('questions wrong', questionsWrong);
-
       // Invoke Trivia message for correct answer response
       correctResponse();
 
@@ -206,13 +194,7 @@ $(document).ready(function () {
       questionsCount++
       // Remove prior question and choice buttons
       $("#game-questions").text("");
-      $(".game-questions-choices").text("")
-
-      // Global Count
-      console.log('question count', questionsCount);
-      console.log('questions correct', questionsCorrect);
-      console.log('questions wrong', questionsWrong);
-
+      $(".game-questions-choices").text("");
       // Invoke Trivia message for wrong answer response
       wrongResponse();
     }
@@ -223,7 +205,6 @@ $(document).ready(function () {
     // Clear interval
     clearInterval(intervalID);
     number = 10;
-    console.log('correctResponse question count', i)
 
     $("#game-questions").html(
       "<p>" + `Correct.  ${triviaQuestions[i - 1].answer[1]} is the right answer` + "</p>"
@@ -296,7 +277,7 @@ $(document).ready(function () {
       startTimer();
       loadGameQuestions(triviaQuestions)
     }, 3000)
-  }
+  };
   // ***End Check Selection Section***
 
 
@@ -307,7 +288,6 @@ $(document).ready(function () {
 
     // Remove content
     $("#question-container").hide()
-    console.log('gameStats function')
     $(".stats-message").html(
       "<p>" + `Game is completed` + "</p>"
     )
@@ -320,7 +300,7 @@ $(document).ready(function () {
     );
     $(".stats-game-score").show(4000);
     $(".replay-game-button").show();
-  }
+  };
 
   // Replay button on-click event
   $(".replay-game-button").on("click", function () {
