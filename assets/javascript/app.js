@@ -5,61 +5,61 @@ const triviaQuestions = [
     question: "Who was the only president to serve more than two terms?",
     choices: ["Franklin D. Roosevelt", "George Washington", "Warren G. Harding", "Woodrow Wilson"],
     answer: [1, "Franklin D. Roosevelt"],
-    image: "fdr.jpg"
+    image: ["fdr.jpg", "435px", "250px"]
   },
   {
     question: "Who was the only president to serve two non-consecutive terms?",
     choices: ["James A. Garfield", "Franklin D. Roosevelt", "Ulysses S. Grant", "Grover Cleveland"],
     answer: [4, "Grover Cleveland"],
-    image: "cleveland.jpg"
+    image: ["cleveland.jpg", "225px", "250px"]
   },
   {
     question: "Who was the first president to live in the White House?",
     choices: ["James Madison", "John Adams", "Thomas Jefferson", "George Washington"],
     answer: [2, "John Adams"],
-    image: "adams.jpg"
+    image: ["adams.jpg", "188px", "250px"]
   },
   {
-    question: "Which U.S. President attended in the Potsdam Conference (July 17 – August 2, 1945), along with main participates, the British Prime Minister and the Premier of the Soviet Union?",
+    question: "Which U.S. President attended the Potsdam Conference (July 17 – August 2, 1945), in Potsdam, Germany",
     choices: ["Andrew Jackson", "Franklin D. Roosevelt", "Harry S. Truman", "Herbert Hoover"],
     answer: [3, "Harry S. Truman"],
-    image: "potsdam.jpg"
+    image: ["potsdam.jpg", "375px", "250px"]
   },
   {
     question: "Which president is not on Mount Rushmore?",
     choices: ["John F. Kennedy", "Abraham Lincoln", "Thomas Jefferson", "Theodore Roosevelt"],
     answer: [1, "John F. Kennedy"],
-    image: "rushmore.jpeg"
+    image: ["rushmore.jpeg", "480px", "250px"]
   },
   {
     question: "Who was the only president appointed as a Supreme Court justice after his presidency?",
     choices: ["Benjamin Harrison", "William H. Taft", "Millard Fillmore", "Rutherford B. Hayes"],
     answer: [2, "William H. Taft"],
-    image: "taft.jpg"
+    image: ["taft.jpg", "200px", "250px"]
   },
   {
     question: "Which president’s portrait is on the $100,000 bill?",
     choices: ["George Washington", "Abraham Lincoln", "Theodore Roosevelt", "Woodrow Wilson"],
     answer: [4, "Woodrow Wilson"],
-    image: "wilson.jpg"
+    image: ["wilson.jpg", "592px", "250px"]
   },
   {
     question: "Which president installed solar panel on the White House roof?",
     choices: ["Bill Clinton", "Jimmy Carter", "Ronald Reagan", "Richard Nixon"],
     answer: [2, "Jimmy Carter"],
-    image: "carter.jpg"
+    image: ["carter.jpg", "450px", "250px"]
   },
   {
     question: "Which president signed the Louisiana Purchase?",
     choices: ["Thomas Jefferson", "James K. Polk", "Andrew Jackson", "John Tyler"],
     answer: [1, "Thomas Jefferson"],
-    image: "jefferson.jpg"
+    image: ["jefferson.jpg", "204px", "250px"]
   },
   {
     question: "Which president did not receive the Nobel Peace Prize?",
     choices: ["Barack Obama", "Woodrow Wilson", "Dwight D. Eisenhower", "Jimmy Carter"],
     answer: [3, "Dwight D. Eisenhower"],
-    image: "eisenhower.jpg"
+    image: ["eisenhower.jpg", "200px", "250px"]
   }
 ];
 
@@ -88,6 +88,7 @@ $(document).ready(function () {
     startTimer();
     loadGameQuestions(triviaQuestions);
   });
+
 
   // ***Questions Section***
   // Start timer function
@@ -176,6 +177,7 @@ $(document).ready(function () {
   };
   // ***End Questions Section***
 
+
   // ***Check Selection Section***
   const checkAnswer = (choice, answer) => {
     // Convert choice to integer for comparison with answer - may change
@@ -227,9 +229,13 @@ $(document).ready(function () {
       "<p>" + `Correct.  ${triviaQuestions[i - 1].answer[1]} is the right answer` + "</p>"
     );
     // Display image
-    let imgURL = `assets/images/${triviaQuestions[i - 1].image}`
+    let imgURL = `assets/images/${triviaQuestions[i - 1].image[0]}`
     let imageDiv = $("<img>").attr("src", imgURL);
-    imageDiv.attr("alt", "Image Response");
+    imageDiv.attr({
+      alt: "Image Response",
+      width: `${triviaQuestions[i - 1].image[1]}`,
+      height: `${triviaQuestions[i - 1].image[2]}`
+    });
     $("#image-response").append(imageDiv);
 
     // 3 seconds countdown (setTimeout) before showing next question
@@ -249,10 +255,13 @@ $(document).ready(function () {
       "<p>" + `You are wrong.  ${triviaQuestions[i - 1].answer[1]} is the correct answer` + "</p>"
     );
     // Display image
-    let imgURL = `assets/images/${triviaQuestions[i - 1].image}`
-    console.log('imageDiv: ', imgURL)
+    let imgURL = `assets/images/${triviaQuestions[i - 1].image[0]}`
     let imageDiv = $("<img>").attr("src", imgURL);
-    imageDiv.attr("alt", "Image Response");
+    imageDiv.attr({
+      alt: "Image Response",
+      width: `${triviaQuestions[i - 1].image[1]}`,
+      height: `${triviaQuestions[i - 1].image[2]}`
+    });
     $("#image-response").append(imageDiv);
 
     // 3 seconds countdown (setTimeout) before showing next question
@@ -272,10 +281,15 @@ $(document).ready(function () {
     );
 
     // Display image
-    let imgURL = `assets/images/${triviaQuestions[i - 1].image}`
+    let imgURL = `assets/images/${triviaQuestions[i - 1].image[0]}`
     let imageDiv = $("<img>").attr("src", imgURL);
-    imageDiv.attr("alt", "Image Response");
+    imageDiv.attr({
+      alt: "Image Response",
+      width: `${triviaQuestions[i - 1].image[1]}`,
+      height: `${triviaQuestions[i - 1].image[2]}`
+    });
     $("#image-response").append(imageDiv);
+
     // 3 seconds countdown (setTimeout) before showing next question
     setTimeout(function () {
       $("#image-response").empty();
@@ -283,7 +297,6 @@ $(document).ready(function () {
       loadGameQuestions(triviaQuestions)
     }, 3000)
   }
-
   // ***End Check Selection Section***
 
 
@@ -326,17 +339,15 @@ $(document).ready(function () {
     $("#question-container").show()
     startTimer();
     loadGameQuestions(triviaQuestions);
-  })
+  });
+
   // ***End Game Stats Sections
 
 
   // Start Game
   const startGame = () => {
     $(".replay-game-button").hide()
-
-  }
+  };
   // Invoke startGame function
   startGame();
-
-
 });

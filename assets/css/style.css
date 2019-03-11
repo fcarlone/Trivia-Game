@@ -60,7 +60,7 @@ body {
 #game-questions {
   font-size: 35px;
   text-align: center;
-  padding-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 button {
@@ -68,6 +68,14 @@ button {
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
 }
 
 .choice-button {
@@ -82,7 +90,6 @@ button {
 .choice-button:hover {
   background: rgb(116, 90, 90);
   border-radius: 8px;
-  cursor: pointer;
   color: white;
   border: black solid;
 }
@@ -116,9 +123,4 @@ button {
 #image-response {
   margin-top: 35px;
   text-align: center;
-}
-
-img {
-  height: 200px;
-  width: 200px;
 }
