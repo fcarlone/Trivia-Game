@@ -295,7 +295,7 @@ $(document).ready(function () {
     // Remove content
     $("#question-container").hide()
     $(".stats-message").html(
-      "<p>" + `Game is completed` + "</p>"
+      "<p>" + `The trivia game is completed` + "</p>"
     )
     // Show content
     $("#stats-container").show();
