@@ -1,5 +1,4 @@
-console.log('app.js')
-// Triva Questions
+// Trivia questions array
 const triviaQuestions = [
   {
     question: "Who was the only president to serve more than two terms?",
@@ -38,7 +37,7 @@ const triviaQuestions = [
     image: ["wilson.jpg", "592px", "250px"]
   },
   {
-    question: "Which president installed solar panel on the White House roof?",
+    question: "Which president installed solar panels on the White House roof?",
     choices: ["Bill Clinton", "Jimmy Carter", "Ronald Reagan", "Richard Nixon"],
     answer: [2, "Jimmy Carter"],
     image: ["carter.jpg", "450px", "250px"]
@@ -72,9 +71,9 @@ let questionsCount = 0;
 let questionsCorrect = 0;
 let questionsWrong = 0;
 let questionsUnanswered = 0;
-// Simer counter;
+// Timer counter;
 let intervalID;
-let number = 10;
+let number = 30;
 // Sound for mouseover choice buttons
 var choiceButtonsAudio = new Audio('assets/audio/1.mp3')
 
@@ -210,7 +209,7 @@ $(document).ready(function () {
   const correctResponse = () => {
     // Clear interval
     clearInterval(intervalID);
-    number = 10;
+    number = 30;
 
     $("#game-questions").html(
       "<p>" + `Correct.  ${triviaQuestions[i - 1].answer[1]} is the right answer` + "</p>"
@@ -232,11 +231,11 @@ $(document).ready(function () {
       loadGameQuestions(triviaQuestions)
     }, 3000)
   };
-  // Display wrong resonse message
+  // Display wrong response message
   const wrongResponse = () => {
     // Clear interval
     clearInterval(intervalID);
-    number = 10;
+    number = 30;
 
     $("#game-questions").html(
       "<p>" + `You are wrong.  ${triviaQuestions[i - 1].answer[1]} is the correct answer` + "</p>"
@@ -258,10 +257,11 @@ $(document).ready(function () {
       loadGameQuestions(triviaQuestions)
     }, 3000)
   }
+  // Display timed-out response message
   const timeExpiredResponse = () => {
     // Clear interval
     clearInterval(intervalID);
-    number = 10;
+    number = 30;
 
     $("#game-questions").html(
       "<p>" + `Time expired.  ${triviaQuestions[i - 1].answer[1]} is the correct answer` + "</p>"
@@ -298,13 +298,14 @@ $(document).ready(function () {
       "<p>" + `Game is completed` + "</p>"
     )
     // Show content
-    $(".replay-game-button").show();
+    $("#stats-container").show();
+    $(".stats-game-score").show(4000);
     $(".stats-game-score").append(
       `<p>Correct Answers: ${questionsCorrect}</p>`,
       `<p>Incorrect Answers: ${questionsWrong}</p>`,
       `<p>Unanswered: ${questionsUnanswered}</p>`
     );
-    $(".stats-game-score").show(4000);
+    $(".stats-game-score").show();
     $(".replay-game-button").show();
   };
 
